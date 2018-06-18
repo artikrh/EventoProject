@@ -53,7 +53,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
     int day, month, year, hour, minute;
     int dayFinal, monthFinal, yearFinal, hourFinal, minuteFinal;
     private final static int RESULT_LOAD_IMAGE=3;
-    private static final String[]paths = {"item 1", "item 2", "item 3"};
+    private static final String[]paths = {"item 1", "item 2" , "item 3"};
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
