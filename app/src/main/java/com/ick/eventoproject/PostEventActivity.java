@@ -95,6 +95,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                 day = c.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(PostEventActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog, PostEventActivity.this, year, month, day);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
 
             }
