@@ -34,8 +34,8 @@ import java.util.Calendar;
 import java.util.List;
 
 public class PostEventActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    
-    TextView txtTime;
+
+    TextView etData;
     Button btnPhoto;
     Button btnSubmit;
     Button btnTime;
@@ -43,16 +43,15 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
     Spinner spinner;
     EditText etEventName;
     EditText etDescription;
-    EditText etData;
     RadioButton rdMusic;
     RadioButton rdSport;
     RadioButton rdTheatre;
-    RadioButton rdEvents;
+    RadioButton rdBusiness;
 
     int day, month, year, hour, minute;
     int dayFinal, monthFinal, yearFinal, hourFinal, minuteFinal;
     private final static int RESULT_LOAD_IMAGE=3;
-    private static final String[]paths = {"item 1", "item 2" , "item 3"};
+    private static final String[] paths = {"item 1", "item 2" , "item 3"};
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
@@ -73,16 +72,14 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
         imgPhoto = findViewById(R.id.imgPhoto);
         btnPhoto = findViewById(R.id.btnPhoto);
         btnTime = findViewById(R.id.btnTime);
-        txtTime = findViewById(R.id.etData);
-        txtTime.setText("Select date and time");
         btnSubmit=findViewById(R.id.btnSubmit);
         etEventName=findViewById(R.id.etEventName);
         etDescription=findViewById(R.id.etDescription);
-        etData=findViewById(R.id.etData);
-        rdEvents=(RadioButton) findViewById(R.id.rdEvents);
+        rdBusiness=(RadioButton) findViewById(R.id.rdBusiness);
         rdMusic=(RadioButton) findViewById(R.id.rdMusic);
         rdSport=(RadioButton) findViewById(R.id.rdSport);
         rdTheatre=(RadioButton) findViewById(R.id.rdTheatre);
+        etData = findViewById(R.id.txtTime);
 
 
         btnTime.setOnClickListener(new View.OnClickListener() {
@@ -104,34 +101,33 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            final  String eventName= etEventName.getText().toString();
-             final String eventDescription=etDescription.getText().toString().trim();
+                final String eventName= etEventName.getText().toString();
+                final String eventDescription=etDescription.getText().toString().trim();
                 boolean music=rdMusic.isChecked();
                 boolean sport=rdSport.isChecked();
                 boolean theatre=rdTheatre.isChecked();
-                boolean events=rdEvents.isChecked();
-                final   String data=etData.toString();
+                boolean business=rdBusiness.isChecked();
+                final String data=etData.getText().toString();
 
-
-                            if(events) {
-                                Business_register businnes=new Business_register(eventName,eventDescription,"Events",data);
+                            if(business) {
+                                Business_register Business=new Business_register(eventName,eventDescription,"Events",data);
                                 FirebaseDatabase.getInstance().getReference("Bussineses").child("").push()
-                                      .setValue(businnes);
+                                      .setValue(Business);
                             }
                            else  if(sport){
-                                Business_register businnes=new Business_register(eventName,eventDescription,"Music","123");
+                                Business_register businnes=new Business_register(eventName,eventDescription,"Music",data);
                                 FirebaseDatabase.getInstance().getReference("Bussineses").child("").push()
                                         .setValue(businnes);
 
                             }
                             else if(theatre){
-                                Business_register businnes=new Business_register(eventName,eventDescription,"Theatre","123");
+                                Business_register businnes=new Business_register(eventName,eventDescription,"Theatre",data);
                                 FirebaseDatabase.getInstance().getReference("Bussineses").child("").push()
                                         .setValue(businnes);
 
                             }
                             else {
-                                Business_register businnes=new Business_register(eventName,eventDescription,"Sport","123");
+                                Business_register businnes=new Business_register(eventName,eventDescription,"Sport",data);
                                 FirebaseDatabase.getInstance().getReference("Bussineses").child("").push()
                                         .setValue(businnes);
 
@@ -139,10 +135,6 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
 
             }
         });
-
-
-
-
 
         //upload image
         btnPhoto.setOnClickListener(new View.OnClickListener() {
@@ -152,10 +144,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
             }
         });
-
-
     }
-
 
     @Override
     public void onDateSet(DatePicker view, int i, int i1, int i2) {
@@ -169,21 +158,14 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(PostEventActivity.this,android.R.style.Theme_DeviceDefault_Light_Dialog, PostEventActivity.this, hour, minute, DateFormat.is24HourFormat(this));
         timePickerDialog.show();
-
     }
 
     @Override
     public void onTimeSet(TimePicker view, int i, int i1) {
             hourFinal = i;
             minuteFinal = i1;
-        String AM_PM ;
-        if(i < 12) {
-            AM_PM = "AM";
-        } else {
-            AM_PM = "PM";
-        }
 
-            etData.setText(hourFinal+":"+minuteFinal+" "+AM_PM+" - "+dayFinal+"/"+monthFinal+"/"+yearFinal);
+            etData.setText(hourFinal+":"+minuteFinal+" - "+dayFinal+"/"+monthFinal+"/"+yearFinal);
     }
 
     @Override

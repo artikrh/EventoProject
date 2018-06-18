@@ -44,8 +44,8 @@
                 android:id="@+id/tvEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email :"
-                android:textSize="22dp"
+                android:text="Email:"
+                android:textSize="20dp"
                 android:textColor="@color/lightGrey"
                 />
 
@@ -63,9 +63,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password :"
+                android:text="Password:"
                 android:id="@+id/tvPassword"
-                android:textSize="22dp"
+                android:textSize="20dp"
                 android:textColor="@color/lightGrey"
                 />
 
@@ -89,14 +89,15 @@
                 android:layout_marginTop="16dp"
                 android:text="Sign In"
                 android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/tvRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvRegister"
-                android:text="Don't have an account? Register here!"
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp"
-                />
+                android:text="Don't have an account? Sign up!"
+                android:textAlignment="center"
+                android:textColor="@color/grey"
+                android:textSize="17dp" />
 
 
             <ProgressBar

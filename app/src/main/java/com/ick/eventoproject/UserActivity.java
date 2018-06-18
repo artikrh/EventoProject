@@ -31,7 +31,6 @@ import java.util.Calendar;
 
 public class UserActivity extends AppCompatActivity  {
 
-    public AutoCompleteTextView atDitelindja;
     public Button btnRegister;
     public AutoCompleteTextView atEmail;
     public AutoCompleteTextView atEmri;
@@ -43,49 +42,36 @@ public class UserActivity extends AppCompatActivity  {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-
-
-        atEmail=(AutoCompleteTextView) findViewById(R.id.atEmail);
-        atEmri=(AutoCompleteTextView) findViewById(R.id.atEmri);
-        atMbiemri=(AutoCompleteTextView) findViewById(R.id.atMbiemri);
-        atPassword=( AutoCompleteTextView) findViewById(R.id.atPassword);
-        atDitelindja=(AutoCompleteTextView) findViewById(R.id.atDitelindja);
-        chckMale=(CheckBox) findViewById(R.id.chckMale);
-        chckFemale=(CheckBox) findViewById(R.id.chckFemale);
-        btnRegister=(Button) findViewById(R.id.btnRegister);
-        prgBar=(ProgressBar) findViewById(R.id.progresBar);
+        atEmail= findViewById(R.id.atEmail);
+        atEmri= findViewById(R.id.atEmri);
+        atMbiemri= findViewById(R.id.atMbiemri);
+        atPassword= findViewById(R.id.atPassword);
+        chckMale= findViewById(R.id.chckMale);
+        chckFemale= findViewById(R.id.chckFemale);
+        btnRegister= findViewById(R.id.btnRegister);
+        prgBar= findViewById(R.id.progresBar);
         prgBar.setVisibility(View.GONE);
-
         mAuth=FirebaseAuth.getInstance();
-
-
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 final  String email= atEmail.getText().toString();
                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 final String emri= atEmri.getText().toString();
                 final   String mbiemri= atMbiemri.getText().toString();
                 final  String password= atPassword.getText().toString();
-                final String ditelindja=atDitelindja.getText().toString();
                 final boolean male=chckMale.isChecked();
                 final boolean female=chckFemale.isChecked();
 
 
-
-
-
-
-                if(emri.equals("") || mbiemri.equals("") ||  email.equals("") || password.equals("") || ditelindja.equals("") || !chckMale.isChecked() || !chckMale.isChecked()   ) {
+                if(emri.equals("") || mbiemri.equals("") ||  email.equals("") || password.equals("") || !chckMale.isChecked() || !chckMale.isChecked()   ) {
                     Toast.makeText(UserActivity.this, "Please fill in all fields!", Toast.LENGTH_LONG).show();
                 }
                 else{
@@ -105,7 +91,7 @@ public class UserActivity extends AppCompatActivity  {
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             prgBar.setVisibility(View.GONE);
                                             if (task.isSuccessful()) {
-                                                User user = new User(emri, mbiemri, email, ditelindja);
+                                                User user = new User(emri, mbiemri, email);
 
 
                                                 FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
