@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flMain, new LoginFragment());
             ft.commit();
-        } else if (id == R.id.nav_settings) { // Settings
-            Intent i = new Intent(MainActivity.this,SettingsActivity.class);
+        } else if (id == R.id.nav_post) { // Settings
+            Intent i = new Intent(MainActivity.this,PostEventActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_share) { // Share
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
