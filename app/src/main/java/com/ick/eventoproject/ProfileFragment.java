@@ -31,6 +31,9 @@ public class ProfileFragment extends Fragment {
             getActivity().setTheme(R.style.AppTheme);
         }
 
+
+
+
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 

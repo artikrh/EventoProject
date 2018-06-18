@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
-      // setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -54,7 +55,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+
         return true;
     }
 
@@ -69,7 +71,11 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             Intent i = new Intent(MainActivity.this,SettingsActivity.class);
             startActivity(i);
+        } else if (id == R.id.notifications) {
+            Intent i = new Intent(MainActivity.this,NotificationsActivity.class);
+            startActivity(i);
         }
+
 
         return super.onOptionsItemSelected(item);
     }

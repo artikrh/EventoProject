@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "739181447238",
+    "firebase_url": "https://evento-b339f.firebaseio.com",
+    "project_id": "evento-b339f",
+    "storage_bucket": "evento-b339f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739181447238:android:eb4ba5e1a5d55b68",
+        "android_client_info": {
+          "package_name": "com.ick.evento"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "739181447238-1p2d3hpj9ggd0486kkf5avbqdlqfs90o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ick.evento",
+            "certificate_hash": "b0bdc75373170f76d1f6b4d1f0a7e40e71972f00"
+          }
+        },
+        {
+          "client_id": "739181447238-mc65qdrqlvu6k97cidtcb49tdinl47qh.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "739181447238-mc65qdrqlvu6k97cidtcb49tdinl47qh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj5amtliS3hHdHYNdVP2B9m_WH4N7SvMc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "739181447238-mc65qdrqlvu6k97cidtcb49tdinl47qh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739181447238:android:aef56f9b365c1edf",
+        "android_client_info": {
+          "package_name": "com.ick.eventoproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "739181447238-0ph22hj9upgr70pj6f16g8d15afjp4cr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ick.eventoproject",
+            "certificate_hash": "b0bdc75373170f76d1f6b4d1f0a7e40e71972f00"
+          }
+        },
+        {
+          "client_id": "739181447238-mc65qdrqlvu6k97cidtcb49tdinl47qh.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "739181447238-mc65qdrqlvu6k97cidtcb49tdinl47qh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj5amtliS3hHdHYNdVP2B9m_WH4N7SvMc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "739181447238-mc65qdrqlvu6k97cidtcb49tdinl47qh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -59,6 +59,7 @@
         <activity
             android:name=".chooseActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".NotificationsActivity"></activity>
     </application>
 
 </manifest>

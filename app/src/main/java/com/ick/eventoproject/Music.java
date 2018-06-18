@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 public class Music extends AppCompatActivity {
 
+
     int[] IMAGES = {R.drawable.zzo, R.drawable.ledri,R.drawable.alban,R.drawable.capitalt,R.drawable.era};
     String[] NAMES = {"Zig Zag Orchestra","Ledri Vula","Alban Skenderaj","Capital-T","Era Istrefi"};
     String[] DESC = {"Apartamenti 196","Zone Club","MIQT Pub","Zone Club","Duplex Premium"};
