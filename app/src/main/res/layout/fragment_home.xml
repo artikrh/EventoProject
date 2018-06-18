@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawerLayout"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:orientation="vertical"
+        android:weightSum="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/etPromoted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Promoted events"
+            android:textAlignment="center" />
+
+        <!-- START Pjesa "Promoted" -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:id="@+id/listView"
+                />
+
+        </RelativeLayout>
+        <!-- END Pjesa "Promoted" -->
+
+
+        <!-- START Pjesa "Categories" -->
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6">
+
+            <View
+                android:id="@+id/centerVerticalShim"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/centerHorizontalShim"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_Music"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/centerVerticalShim"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/centerHorizontalShim"
+                android:background="#ffffff"
+                android:contentDescription="Music"
+                android:gravity="center"
+                android:padding="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher_background">
+
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/imgBtn_Sport"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/centerVerticalShim"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/centerHorizontalShim"
+                android:background="#ffffff"
+                android:contentDescription="Sports"
+                android:gravity="center"
+                android:padding="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher_background">
+
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/imgBtn_Business"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/centerVerticalShim"
+                android:layout_toStartOf="@+id/centerHorizontalShim"
+                android:background="#ffffff"
+                android:contentDescription="Business"
+                android:gravity="center"
+                android:padding="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher_background">
+
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/imgBtn_Theatre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="false"
+                android:layout_below="@+id/centerVerticalShim"
+                android:layout_toEndOf="@+id/centerHorizontalShim"
+                android:background="#ffffff"
+                android:contentDescription="Theatre"
+                android:gravity="center"
+                android:padding="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher_background">
+
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvMusic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/centerVerticalShim"
+                android:layout_toStartOf="@+id/centerHorizontalShim"
+                android:layout_alignParentStart="true"
+                android:background="#80000000"
+                android:text="Music"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvSports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/centerVerticalShim"
+                android:layout_toEndOf="@+id/centerHorizontalShim"
+                android:layout_alignParentEnd="true"
+                android:background="#80000000"
+                android:layout_alignTop="@+id/tvMusic"
+                android:text="Sports"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvBusiness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/centerHorizontalShim"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="#80000000"
+                android:text="Business"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvTheatre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/centerHorizontalShim"
+                android:background="#80000000"
+                android:text="Theatre"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+
+        </RelativeLayout>
+
+        <!-- END Pjesa "Categories" -->
+
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
