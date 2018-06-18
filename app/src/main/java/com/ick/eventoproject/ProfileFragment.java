@@ -19,7 +19,9 @@ import java.util.Locale;
  */
 public class ProfileFragment extends Fragment {
 
+    TextView txtName;
     TextView txtLocation;
+    TextView txtEmail;
     Geocoder mGeocoder;
 
     public ProfileFragment() {
@@ -42,7 +44,10 @@ public class ProfileFragment extends Fragment {
             getActivity().setTheme(R.style.AppTheme);
         }
 
+        txtName = view.findViewById(R.id.tv_name);
         txtLocation = view.findViewById(R.id.txtLocation);
+        txtEmail = view.findViewById(R.id.tv_email);
+
         try {
             txtLocation.setText(getCityNameByCoordinates(44.786568,20.448922));
         } catch (Exception e){
