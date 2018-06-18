@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class PostEventActivity extends AppCompatActivity implements   DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class PostEventActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
 
     TextView txtTime;
