@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Default fragment = HomeFragment
+        // Default fragment = HomeFragment (if logged in)
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.flMain, new HomeFragment());
         ft.commit();
