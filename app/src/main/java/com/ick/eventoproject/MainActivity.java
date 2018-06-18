@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.flMain, new HomeFragment());
         ft.commit();
-        navigationView.setCheckedItem(R.id.nav_camera);
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     @Override
@@ -76,17 +76,29 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) { // Home
+        if (id == R.id.nav_home) { // Home
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flMain, new HomeFragment());
             ft.commit();
-        } else if (id == R.id.nav_gallery) { // Profile
+        } else if (id == R.id.nav_profile) { // Profile
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flMain, new ProfileFragment());
             ft.commit();
-        } else if (id == R.id.nav_slideshow) { // Logout
+        } else if (id == R.id.nav_logout) { // Logout
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flMain, new LoginFragment());
+            ft.commit();
+        } else if (id == R.id.nav_settings) { // Settings
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flMain, new SettingsFragment());
+            ft.commit();
+        } else if (id == R.id.nav_share) { // Share
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flMain, new ShareFragment());
+            ft.commit();
+        } else if (id == R.id.nav_about) { // About
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flMain, new AboutFragment());
             ft.commit();
         }
 
