@@ -87,9 +87,8 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.flMain, new ProfileFragment());
             ft.commit();
         } else if (id == R.id.nav_logout) { // Logout
-            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.flMain, new LoginFragment());
-            ft.commit();
+            Intent i = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_post) { // Settings
             Intent i = new Intent(MainActivity.this,PostEventActivity.class);
             startActivity(i);
