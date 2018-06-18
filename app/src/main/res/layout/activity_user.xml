@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/b_gradient"
+    tools:context=".chooseActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="163dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo" />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="465dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="28dp">
+
+
+        <TextView
+            android:id="@+id/tvEmri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="23dp"
+            android:text="Emri :"
+            android:textColor="@color/lightGrey"
+            android:textSize="20dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/atEmri"
+            android:layout_width="358dp"
+            android:layout_height="37dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvEmri"
+            android:layout_marginStart="16dp"
+            android:background="@color/lightGrey"
+            android:textColor="@color/colorPrimaryBlack"
+            android:imeOptions="actionNext"
+            android:imeActionId="1"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/tvMbiemri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/atEmri"
+            android:layout_below="@+id/atEmri"
+            android:text="Mbiemri :"
+            android:textColor="@color/lightGrey"
+            android:textSize="20dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/atMbiemri"
+            android:layout_width="358dp"
+            android:layout_height="36dp"
+            android:layout_alignStart="@+id/tvEmri"
+            android:layout_below="@+id/tvMbiemri"
+            android:layout_marginStart="-7dp"
+            android:background="@color/lightGrey"
+            android:imeOptions="actionNext"
+            android:textColor="@color/colorPrimaryBlack"
+            android:imeActionId="2"
+            android:singleLine="true"
+            android:maxLines="1"
+            />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/tvEmri"
+            android:layout_below="@+id/atMbiemri"
+            android:text="Email: "
+            android:textColor="@color/lightGrey"
+            android:textSize="20dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/atEmail"
+            android:layout_width="357dp"
+            android:layout_height="37dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvEmail"
+            android:layout_marginStart="17dp"
+            android:background="@color/lightGrey"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorPrimaryBlack"
+            android:textSize="20dp"
+            android:imeActionId="3"
+            android:singleLine="true"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/atEmri"
+            android:layout_below="@+id/atEmail"
+            android:text="Password:"
+            android:textColor="@color/lightGrey"
+            android:textSize="20dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/atPassword"
+            android:layout_width="353dp"
+            android:layout_height="37dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvPassword"
+            android:layout_marginStart="18dp"
+            android:background="@color/lightGrey"
+            android:inputType="textPassword"
+            android:textColor="@color/colorPrimaryBlack"
+            android:textSize="20dp"
+            android:imeOptions="actionNext"
+            android:imeActionId="4"
+            android:singleLine="true"
+            android:maxLines="1"
+            />
+
+
+
+
+        <TextView
+            android:id="@+id/tvGjinia"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignBaseline="@+id/chckFemale"
+            android:layout_toStartOf="@+id/chckMale"
+            android:text="Gjinia: "
+            android:textAlignment="center"
+            android:textColor="@color/lightGrey"
+            android:textSize="20dp" />
+
+
+        <CheckBox
+            android:id="@+id/chckMale"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/chckFemale"
+            android:layout_toStartOf="@+id/chckFemale"
+            android:text="Male "
+            android:textColor="@color/lightGrey"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tvDitelindja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/atEmri"
+            android:layout_below="@+id/chckFemale"
+            android:text="Ditelindja: "
+            android:textColor="@color/lightGrey"
+            android:textSize="20dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/atDitelindja"
+            android:layout_width="353dp"
+            android:layout_height="38dp"
+            android:layout_alignStart="@+id/tvEmri"
+            android:layout_below="@+id/tvDitelindja"
+            android:layout_marginStart="-6dp"
+            android:background="@color/lightGrey"
+            android:inputType="date"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:imeOptions="actionDone"
+            />
+
+        <ProgressBar
+            android:id="@+id/progresBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/atMbiemri"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="207dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/atDitelindja"
+            android:layout_centerHorizontal="true"
+            android:text="Register" />
+
+        <CheckBox
+            android:id="@+id/chckFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/atPassword"
+            android:layout_marginEnd="27dp"
+            android:text="Female  "
+            android:textColor="@color/lightGrey"
+            android:textSize="20dp" />
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

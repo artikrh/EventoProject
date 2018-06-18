@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".chooseActivity">
+
+
+
+    <ImageView
+        android:id="@+id/startActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/start" />
+
+    <ImageView
+        android:id="@+id/vija_ndarese"
+        android:layout_width="313dp"
+        android:layout_height="314dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/vija_ndarese" />
+
+    <ImageView
+        android:id="@+id/perdoruesi_ikona"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="207dp"
+        android:src="@drawable/perdoruesi_ikona" />
+
+    <ImageView
+        android:id="@+id/biznes_ikona"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="199dp"
+        android:layout_marginEnd="95dp"
+        android:src="@drawable/biznes_ikona" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvProfili"
+        android:text="Zgjedh profilin e perdoruesit:"
+        android:textSize="23dp"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginTop="75dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tvPerdoreusi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="160dp"
+        android:text="Perdorues :"
+        android:textColor="@color/lightGrey"
+        android:textSize="23dp" />
+
+    <TextView
+        android:id="@+id/tvBiznesi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/biznes_ikona"
+        android:layout_marginBottom="160dp"
+        android:text="Biznes : "
+        android:textColor="@color/lightGrey"
+        android:textSize="23dp" />
+</RelativeLayout>
