@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.os.Handler;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextClock;
@@ -142,6 +143,31 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 */
+
+    private Boolean exit = false;
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            // Mshele aplikacionin kur e prek Back (duhet me shkatrru session)
+            Intent a = new Intent(Intent.ACTION_MAIN);
+            a.addCategory(Intent.CATEGORY_HOME);
+            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(a);
+
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
+    }
+
 
     public void login_succesful() {
         Intent login = new Intent(this, MainActivity.class);
