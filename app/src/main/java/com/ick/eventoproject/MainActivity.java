@@ -1,5 +1,6 @@
 package com.ick.eventoproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -65,7 +66,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent i = new Intent(MainActivity.this,SettingsActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
@@ -89,9 +91,8 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.flMain, new LoginFragment());
             ft.commit();
         } else if (id == R.id.nav_settings) { // Settings
-            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.flMain, new SettingsFragment());
-            ft.commit();
+            Intent i = new Intent(MainActivity.this,SettingsActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_share) { // Share
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flMain, new ShareFragment());

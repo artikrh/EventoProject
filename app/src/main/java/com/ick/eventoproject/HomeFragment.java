@@ -36,6 +36,15 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        SharedPref sharedpref = new SharedPref(getActivity());
+
+        if(sharedpref.loadNightModeState()){
+            getActivity().setTheme(R.style.darktheme);
+        }
+        else{
+            getActivity().setTheme(R.style.AppTheme);
+        }
+
         ListView listView = view.findViewById(R.id.listView);
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setAdapter(customAdapter);

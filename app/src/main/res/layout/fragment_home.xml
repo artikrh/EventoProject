@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout"
+    android:background="?attr/backgroundcolor"
     tools:context=".HomeFragment">
 
     <LinearLayout
@@ -24,6 +25,7 @@
             android:id="@+id/etPromoted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="?attr/textcolor"
             android:text="Promoted events"
             android:textAlignment="center" />
 
@@ -75,7 +77,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_toStartOf="@+id/centerHorizontalShim"
-                android:background="#ffffff"
+                android:background="?attr/backgroundcolor"
                 android:contentDescription="Music"
                 android:gravity="center"
                 android:padding="3dp"
@@ -92,7 +94,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/centerHorizontalShim"
-                android:background="#ffffff"
+                android:background="?attr/backgroundcolor"
                 android:contentDescription="Sports"
                 android:gravity="center"
                 android:padding="3dp"
@@ -109,7 +111,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/centerVerticalShim"
                 android:layout_toStartOf="@+id/centerHorizontalShim"
-                android:background="#ffffff"
+                android:background="?attr/backgroundcolor"
                 android:contentDescription="Business"
                 android:gravity="center"
                 android:padding="3dp"
@@ -126,7 +128,7 @@
                 android:layout_alignParentStart="false"
                 android:layout_below="@+id/centerVerticalShim"
                 android:layout_toEndOf="@+id/centerHorizontalShim"
-                android:background="#ffffff"
+                android:background="?attr/backgroundcolor"
                 android:contentDescription="Theatre"
                 android:gravity="center"
                 android:padding="3dp"

@@ -21,7 +21,16 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
+        SharedPref sharedpref = new SharedPref(getActivity());
+
+        if(sharedpref.loadNightModeState()){
+            getActivity().setTheme(R.style.darktheme);
+        }
+        else{
+            getActivity().setTheme(R.style.AppTheme);
+        }
+
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 

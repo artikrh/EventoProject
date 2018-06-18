@@ -42,7 +42,7 @@
             android:layout_marginTop="15sp"
             android:fontFamily="sans-serif-light"
             android:text="Arti Karahoda"
-            android:textColor="@color/white"
+            android:textColor="?attr/textcolor"
             android:textSize="32sp" />
 
 
@@ -74,6 +74,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/backgroundcolor"
         android:layout_below="@id/header">
 
         <LinearLayout
@@ -103,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="arti.karahoda@gmail.com"
-                    android:textColor="#000000"
+                    android:textColor="?attr/textcolor"
                     android:textSize="18sp" />
 
                 <View
@@ -132,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="+37744111111"
-                    android:textColor="#000000"
+                    android:textColor="?attr/textcolor"
                     android:textSize="18sp" />
 
                 <View
@@ -163,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="facebook.com/ArtiKarahoda"
-                    android:textColor="#000000"
+                    android:textColor="?attr/textcolor"
                     android:textSize="18sp" />
 
                 <View

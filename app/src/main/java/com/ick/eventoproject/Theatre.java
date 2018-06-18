@@ -23,6 +23,16 @@ public class Theatre extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPref sharedpref = new SharedPref(this);
+
+        if(sharedpref.loadNightModeState()){
+            setTheme(R.style.darktheme);
+        }
+        else{
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theatre);
 
