@@ -13,6 +13,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -45,6 +53,32 @@ public class ProfileActivity extends AppCompatActivity {
         txtLocation = findViewById(R.id.txtLocation);
         txtEmail = findViewById(R.id.tv_email);
         txtGeo = findViewById(R.id.txtGeo);
+
+        //Retreive data from databse to change User name and Email
+
+
+        DatabaseReference info= FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference info1=info.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        info1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String emri= dataSnapshot.child("emri").getValue(String.class);
+                String mbiemri= dataSnapshot.child("mbiemri").getValue(String.class);
+                String email=dataSnapshot.child("email").getValue(String.class);
+                txtName.setText(emri+" "+mbiemri);
+                txtEmail.setText(email);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
 
         //locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         //getLocation();

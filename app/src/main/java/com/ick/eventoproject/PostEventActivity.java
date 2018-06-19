@@ -47,6 +47,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
     RadioButton rdSport;
     RadioButton rdTheatre;
     RadioButton rdBusiness;
+    EditText etLocation;
 
     int day, month, year, hour, minute;
     int dayFinal, monthFinal, yearFinal, hourFinal, minuteFinal;
@@ -80,6 +81,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
         rdSport=(RadioButton) findViewById(R.id.rdSport);
         rdTheatre=(RadioButton) findViewById(R.id.rdTheatre);
         etData = findViewById(R.id.txtTime);
+        etLocation=findViewById(R.id.etLocation);
 
 
         btnTime.setOnClickListener(new View.OnClickListener() {
@@ -108,30 +110,70 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                 boolean theatre=rdTheatre.isChecked();
                 boolean business=rdBusiness.isChecked();
                 final String data=etData.getText().toString();
+                final String location=etLocation.getText().toString();
 
-                            if(business) {
-                                Business_register Business=new Business_register(eventName,eventDescription,"Events",data);
-                                FirebaseDatabase.getInstance().getReference("Bussineses").child("").push()
-                                      .setValue(Business);
-                            }
-                           else  if(sport){
-                                Business_register businnes=new Business_register(eventName,eventDescription,"Music",data);
-                                FirebaseDatabase.getInstance().getReference("Bussineses").child("").push()
-                                        .setValue(businnes);
-
-                            }
-                            else if(theatre){
-                                Business_register businnes=new Business_register(eventName,eventDescription,"Theatre",data);
-                                FirebaseDatabase.getInstance().getReference("Bussineses").child("").push()
-                                        .setValue(businnes);
-
-                            }
-                            else {
-                                Business_register businnes=new Business_register(eventName,eventDescription,"Sport",data);
-                                FirebaseDatabase.getInstance().getReference("Bussineses").child("").push()
-                                        .setValue(businnes);
+                if(eventName.equals("") || eventDescription.equals("") || !(music || sport || theatre || business)) {
+                    Toast.makeText(PostEventActivity.this," Please fill in the fields!",Toast.LENGTH_LONG).show();
+                }
+                else {
+                if(business) {
+                    Business_register Business=new Business_register(eventName,eventDescription,location,data);
+                        FirebaseDatabase.getInstance().getReference("Events").child("Business").child(eventName)
+                            .setValue(Business).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
+                               // startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
 
                             }
+                        }
+                    });
+                }
+                else if(music) {
+                    Business_register Business=new Business_register(eventName,eventDescription,location,data);
+                    FirebaseDatabase.getInstance().getReference("Events").child("Music").child(eventName)
+                            .setValue(Business).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
+                               // startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
+
+                            }
+                        }
+                    });
+                }
+                else if(theatre) {
+                    Business_register Business=new Business_register(eventName,eventDescription,location,data);
+                    FirebaseDatabase.getInstance().getReference("Events").child("Theatre").child(eventName)
+                            .setValue(Business).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
+
+                            }
+                        }
+                    });
+                }
+                else if(sport) {
+                    Business_register Business=new Business_register(eventName,eventDescription,location,data);
+                    FirebaseDatabase.getInstance().getReference("Events").child("Sport").child(eventName)
+                            .setValue(Business).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
+
+                            }
+                        }
+                    });
+
+                }
+                }
 
             }
         });
@@ -162,10 +204,10 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
 
     @Override
     public void onTimeSet(TimePicker view, int i, int i1) {
-            hourFinal = i;
-            minuteFinal = i1;
+        hourFinal = i;
+        minuteFinal = i1;
 
-            etData.setText(hourFinal+":"+minuteFinal+" - "+dayFinal+"/"+monthFinal+"/"+yearFinal);
+        etData.setText(hourFinal+":"+minuteFinal+" - "+dayFinal+"/"+monthFinal+"/"+yearFinal);
     }
 
     @Override
@@ -178,8 +220,4 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
     }
 
 
-    }
-
-
-
-
+}

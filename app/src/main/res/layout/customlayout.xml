@@ -49,4 +49,14 @@
         android:textColor="?attr/textcolor"
         android:text="Event Time" />
 
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvTitle"
+        android:paddingEnd="8dp"
+        android:text="Event location"
+        android:textColor="?attr/textcolor" />
+
 </RelativeLayout>

@@ -1,7 +1,8 @@
 package com.ick.eventoproject;
 
 public class Business_register {
-   String  eventName, eventDesciption,category;
+   String  eventName, eventDesciption,location;
+
     String date;
 
 
@@ -12,10 +13,10 @@ public class Business_register {
 
 
     //Funksioni per ti ruajtur te dhenat ne databaze, paswordi ruhet te sektori per autentifikim
-    public Business_register(String eventName, String eventDesciption, String  category, String date) {
+    public Business_register(String eventName, String eventDesciption,String location, String date) {
         this.eventName = eventName;
         this.eventDesciption = eventDesciption;
-        this.category = category;
+        this.location=location;
         this.date = date;
     }
 }
