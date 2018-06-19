@@ -1,8 +1,11 @@
 package com.ick.eventoproject;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,17 +18,24 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ick.eventoproject.R;
 
 public class Sport extends AppCompatActivity {
 
-    int[] IMAGES = {R.drawable.ffk,R.drawable.ffk};
-    String[] NAMES = {"Prishtina vs Drita","Trepça'89 vs Flamurtari"};
-    String[] DESC = {"Vala Superliga, Edicioni garues 2017/18","Vala Superliga, Edicioni garues 2017/18"};
-    String[] TIME = {"AUGUST 18 @ 13:00","JUNE 20 @ 13:00"};
-    private DrawerLayout mDrawer;
-    private ActionBarDrawerToggle mToogle;
-    NavigationView navigationView;
+    //int[] IMAGES = {R.drawable.ffk,R.drawable.ffk};
+    //String[] NAMES = {"Prishtina vs Drita","Trepça'89 vs Flamurtari"};
+    //String[] DESC = {"Vala Superliga, Edicioni garues 2017/18","Vala Superliga, Edicioni garues 2017/18"};
+    //String[] TIME = {"AUGUST 18 @ 13:00","JUNE 20 @ 13:00"};
+
+    public static String[] names;
+    public static String[] descriptions;
+    public static String[] locations;
+    public static String[] times;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +52,66 @@ public class Sport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sport);
 
-        ListView listView = findViewById(R.id.listView);
-        CustomAdapter customAdapter = new CustomAdapter();
-        listView.setAdapter(customAdapter);
+        final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.drawerLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                (new Handler()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                        loadData();
+
+                    }
+                },2000);
+            }
+        });
+        loadData();
 
     }
 
+    protected void loadData(){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events").child("Sport");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> recordsSnaphots = dataSnapshot.getChildren();
 
+                int count = (int) dataSnapshot.getChildrenCount();
+                int i = 0;
+
+                names = new String[count];
+                descriptions = new String[count];
+                locations = new String[count];
+                times = new String[count];
+
+                for(DataSnapshot recordSnapshot: recordsSnaphots){
+                    MusicRecord record = recordSnapshot.getValue(MusicRecord.class);
+                    if(record != null) {
+                        names[i] = record.eventName;
+                        descriptions[i] = record.eventDesciption;
+                        locations[i] = record.location;
+                        times[i] = record.date;
+                        i++;
+                    }
+                }
+                ListView listView = findViewById(R.id.listView);
+                CustomAdapter customAdapter = new CustomAdapter();
+                listView.setAdapter(customAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return IMAGES.length;
+            return names.length;
         }
 
         @Override
@@ -71,20 +129,22 @@ public class Sport extends AppCompatActivity {
 
             convertView = getLayoutInflater().inflate(R.layout.customlayout,null);
 
-            ImageView imageView = convertView.findViewById(R.id.imageView);
+            //ImageView imageView = convertView.findViewById(R.id.imageView);
             TextView tvTitle = convertView.findViewById(R.id.tvTitle);
             TextView tvDesc = convertView.findViewById(R.id.tvDesc);
             TextView tvTime = convertView.findViewById(R.id.tvTime);
+            TextView tvLocation = convertView.findViewById(R.id.tvLocation);
 
-            //imageView.setImageResource(R.drawable.ffk);
-            imageView.setImageResource(IMAGES[0]);
-            tvTitle.setText(NAMES[position]);
-            tvDesc.setText(DESC[position]);
-            tvTime.setText(TIME[position]);
+            //imageView.setImageResource(IMAGES[position]);
+            tvTitle.setText(names[position]);
+            tvDesc.setText(descriptions[position]);
+            tvTime.setText(times[position]);
+            tvLocation.setText(locations[position]);
 
             return convertView;
 
         }
     }
+
 
 }

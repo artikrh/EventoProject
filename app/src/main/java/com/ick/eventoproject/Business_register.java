@@ -2,9 +2,7 @@ package com.ick.eventoproject;
 
 public class Business_register {
    String  eventName, eventDesciption,location;
-
-    String date;
-
+   String date;
 
     //Blank konstruktori per lexim te vlerave nga databaza
     public Business_register() {

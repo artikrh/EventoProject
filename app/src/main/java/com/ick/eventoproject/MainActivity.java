@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity
     TextView tvEmail;
     ImageView imgProfile;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +40,10 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        //tvEmri = findViewById(R.id.tvEmri);
+        //tvEmail = findViewById(R.id.tvEmail);
 
       //  Toast.makeText(MainActivity.this,emri,Toast.LENGTH_LONG).show();
-
-
 
         DatabaseReference info=FirebaseDatabase.getInstance().getReference("Users");
         DatabaseReference info1=info.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -54,14 +51,12 @@ public class MainActivity extends AppCompatActivity
             info1.addValueEventListener(new ValueEventListener() {
          @Override
          public void onDataChange(DataSnapshot dataSnapshot) {
-            String emri= dataSnapshot.child("emri").getValue(String.class);
+             String emri= dataSnapshot.child("emri").getValue(String.class);
              String mbiemri= dataSnapshot.child("mbiemri").getValue(String.class);
              String email=dataSnapshot.child("email").getValue(String.class);
-             tvEmri=findViewById(R.id.tvEmri);
-             tvEmri.setText(emri+" "+mbiemri);
-             tvEmail=findViewById(R.id.tvEmail);
-             tvEmail.setText(email);
 
+             //tvEmri.setText(emri+" "+mbiemri);
+             //tvEmail.setText(email);
          }
 
          @Override
@@ -69,12 +64,6 @@ public class MainActivity extends AppCompatActivity
 
           }
      });
-
-
-
-
-
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -90,6 +79,7 @@ public class MainActivity extends AppCompatActivity
         ft.replace(R.id.flMain, new HomeFragment());
         ft.commit();
         navigationView.setCheckedItem(R.id.nav_home);
+
     }
 
     @Override
