@@ -92,9 +92,11 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this,PostEventActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_share) { // Share
-            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.flMain, new ShareFragment());
-            ft.commit();
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/pain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Evento");
+            shareIntent.putExtra(Intent.EXTRA_TEXT,"You should definitely check Evento app!");
+            startActivity(Intent.createChooser(shareIntent,"Share via"));
         } else if (id == R.id.nav_about) { // About
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flMain, new AboutFragment());
