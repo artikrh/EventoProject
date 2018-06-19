@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity
         //tvEmri = findViewById(R.id.tvEmri);
         //tvEmail = findViewById(R.id.tvEmail);
 
-      //  Toast.makeText(MainActivity.this,emri,Toast.LENGTH_LONG).show();
-
         DatabaseReference info=FirebaseDatabase.getInstance().getReference("Users");
         DatabaseReference info1=info.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
        // DatabaseReference info2=info1.child("emri");
@@ -135,7 +133,7 @@ public class MainActivity extends AppCompatActivity
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/pain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Evento");
-            shareIntent.putExtra(Intent.EXTRA_TEXT,"You should definitely check Evento app!");
+            shareIntent.putExtra(Intent.EXTRA_TEXT,"You should definitely check Evento App!");
             startActivity(Intent.createChooser(shareIntent,"Share via"));
         } else if (id == R.id.nav_about) { // About
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
