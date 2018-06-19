@@ -18,11 +18,11 @@ public class ShareFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        View view = inflater.inflate(R.layout.fragment_share, container, false);
         SharedPref sharedpref = new SharedPref(getActivity());
 
         if(sharedpref.loadNightModeState()){
@@ -32,8 +32,9 @@ public class ShareFragment extends Fragment {
             getActivity().setTheme(R.style.AppTheme);
         }
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_share, container, false);
+
+
+        return view;
     }
 
 }

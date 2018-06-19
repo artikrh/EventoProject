@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".ProfileActivity">
 
     <RelativeLayout
         android:id="@+id/header"
@@ -58,6 +58,17 @@
             android:textColor="@color/address"
             android:textSize="14sp" />
 
+        <TextView
+            android:id="@+id/txtGeo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLocation"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif"
+            android:text="00/00"
+            android:textColor="@color/address"
+            android:textSize="14sp" />
+
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -70,7 +81,6 @@
 
     </RelativeLayout>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -80,6 +90,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?attr/backgroundcolor"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"

@@ -16,6 +16,7 @@ import android.widget.TextView;
 public class Theatre extends AppCompatActivity {
 
     int[] IMAGES = {R.drawable.t1,R.drawable.t2};
+    // if <i merr tdhenat> category == Theater,
     String[] NAMES = {"Nata e Dymbëdhjetë","Vrima e Lepurit"};
     String[] DESC = {"Nata e Dymbëdhjetë, është njëra nga komeditë e Shekspirit.","Shfaqja Vrima e Lepurit e David Lindsay Abaire dhe në regji të Zana Hoxha"};
     String[] TIME = {"MAY 17 @ 21:00","JUNE 11 @ 17:00"};
