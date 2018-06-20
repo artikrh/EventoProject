@@ -24,10 +24,14 @@ import android.text.format.DateFormat;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,6 +60,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
+    private StorageReference mStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +87,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
         rdTheatre=(RadioButton) findViewById(R.id.rdTheatre);
         etData = findViewById(R.id.txtTime);
         etLocation=findViewById(R.id.etLocation);
+        mStorage= FirebaseStorage.getInstance().getReference();
 
 
         btnTime.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +122,10 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                     Toast.makeText(PostEventActivity.this," Please fill in the fields!",Toast.LENGTH_LONG).show();
                 }
                 else {
-                if(business) {
+
+                    Intent intent=new Intent(Intent.ACTION_PICK);
+                if(business) {;
+
                     Business_register Business=new Business_register(eventName,eventDescription,location,data);
                         FirebaseDatabase.getInstance().getReference("Events").child("Business").child(eventName)
                             .setValue(Business).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -213,9 +222,16 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data !=null){
-            Uri selectedImage=data.getData();
-            imgPhoto.setImageURI(selectedImage);
+        if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK  ){
+            Uri uri=data.getData();
+            StorageReference filePath=mStorage.child("Photos").child(uri.getLastPathSegment());
+
+            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(PostEventActivity.this,"Upload Done",Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
 
