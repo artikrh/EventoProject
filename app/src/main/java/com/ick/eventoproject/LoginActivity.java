@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     ProgressBar prgBar;
 
-
     private DatabaseReference mDatabase;
 
     @Override
