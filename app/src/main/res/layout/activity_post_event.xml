@@ -58,7 +58,7 @@
             android:layout_alignBaseline="@id/btnTime"
             android:layout_toEndOf="@id/btnTime"
             android:ems="10"
-            android:hint="Event Time"
+            android:hint=" "
             android:textAlignment="center"
             android:inputType="none"
             android:textColor="?attr/textcolor"
@@ -68,7 +68,7 @@
         <Button
             android:id="@+id/btnTime"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/etLocation"
             android:background="?attr/buttoncolor"
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="?attr/textcolor"
                 android:text="Business"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 />
 
             <RadioButton
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="?attr/textcolor"
                 android:text="Music"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 />
 
             <RadioButton
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="?attr/textcolor"
                 android:text="Sport"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 />
 
             <RadioButton
@@ -124,10 +124,11 @@
                 android:layout_height="wrap_content"
                 android:textColor="?attr/textcolor"
                 android:text="Theatre"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 />
         </RadioGroup>
 
+        <!--
         <Button
             android:id="@+id/btnPhoto"
             android:layout_width="match_parent"
@@ -143,7 +144,7 @@
             android:layout_marginBottom="20dp"
             android:layout_above="@+id/btnSubmit"
             android:layout_centerHorizontal="true" />
-
+        -->
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"

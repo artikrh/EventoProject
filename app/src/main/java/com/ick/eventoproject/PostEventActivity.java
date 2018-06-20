@@ -44,10 +44,10 @@ import java.util.List;
 public class PostEventActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     TextView etData;
-    Button btnPhoto;
+    //Button btnPhoto;
     Button btnSubmit;
     Button btnTime;
-    ImageView imgPhoto;
+    //ImageView imgPhoto;
     Spinner spinner;
     EditText etEventName;
     EditText etDescription;
@@ -79,8 +79,8 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_event);
-        imgPhoto = findViewById(R.id.imgPhoto);
-        btnPhoto = findViewById(R.id.btnPhoto);
+        //imgPhoto = findViewById(R.id.imgPhoto);
+        //btnPhoto = findViewById(R.id.btnPhoto);
         btnTime = findViewById(R.id.btnTime);
         btnSubmit=findViewById(R.id.btnSubmit);
         etEventName=findViewById(R.id.etEventName);
@@ -136,8 +136,8 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
-                               // startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
+                                Toast.makeText(PostEventActivity.this," Post successful!",Toast.LENGTH_LONG).show();
+                               startActivity(new Intent(PostEventActivity.this, MainActivity.class));
 
                                 NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(PostEventActivity.this, "M_CH_ID");
 
@@ -164,8 +164,8 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
-                               // startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
+                                Toast.makeText(PostEventActivity.this," Post successful!",Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(PostEventActivity.this, MainActivity.class));
 
                                 NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(PostEventActivity.this, "M_CH_ID");
 
@@ -193,8 +193,8 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
+                                Toast.makeText(PostEventActivity.this," Post successful!",Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(PostEventActivity.this, MainActivity.class));
 
                                 NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(PostEventActivity.this, "M_CH_ID");
 
@@ -221,8 +221,8 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
+                                Toast.makeText(PostEventActivity.this," Post successful!",Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(PostEventActivity.this, MainActivity.class));
 
                                 NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(PostEventActivity.this, "M_CH_ID");
 
@@ -248,6 +248,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
             }
         });
 
+        /*
         //upload image
         btnPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -256,6 +257,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
             }
         });
+        */
     }
 
     @Override
