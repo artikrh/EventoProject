@@ -1,12 +1,16 @@
 package com.ick.eventoproject;
 
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.net.wifi.hotspot2.omadm.PpsMoParser;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -135,6 +139,20 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                                 Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
                                // startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
 
+                                NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(PostEventActivity.this, "M_CH_ID");
+
+                                notificationBuilder.setAutoCancel(true)
+                                        .setDefaults(Notification.DEFAULT_ALL)
+                                        .setWhen(System.currentTimeMillis())
+                                        .setSmallIcon(R.mipmap.ic_launcher)
+                                        .setTicker("Evento")
+                                        .setPriority(Notification.PRIORITY_MAX)
+                                        .setContentTitle("New Event Added")
+                                        .setContentText("New business event added")
+                                        .setContentInfo("Info");
+
+                                NotificationManager notificationManager = (NotificationManager) PostEventActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+                                notificationManager.notify(1, notificationBuilder.build());
                             }
                         }
                     });
@@ -148,6 +166,21 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                             if(task.isSuccessful()){
                                 Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
                                // startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
+
+                                NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(PostEventActivity.this, "M_CH_ID");
+
+                                notificationBuilder.setAutoCancel(true)
+                                        .setDefaults(Notification.DEFAULT_ALL)
+                                        .setWhen(System.currentTimeMillis())
+                                        .setSmallIcon(R.mipmap.ic_launcher)
+                                        .setTicker("Evento")
+                                        .setPriority(Notification.PRIORITY_MAX)
+                                        .setContentTitle("New Event Added")
+                                        .setContentText("New music event added")
+                                        .setContentInfo("Info");
+
+                                NotificationManager notificationManager = (NotificationManager) PostEventActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+                                notificationManager.notify(1, notificationBuilder.build());
 
                             }
                         }
@@ -163,6 +196,20 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                                 Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
 
+                                NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(PostEventActivity.this, "M_CH_ID");
+
+                                notificationBuilder.setAutoCancel(true)
+                                        .setDefaults(Notification.DEFAULT_ALL)
+                                        .setWhen(System.currentTimeMillis())
+                                        .setSmallIcon(R.mipmap.ic_launcher)
+                                        .setTicker("Evento")
+                                        .setPriority(Notification.PRIORITY_MAX)
+                                        .setContentTitle("New Event Added")
+                                        .setContentText("New theatre event added")
+                                        .setContentInfo("Info");
+
+                                NotificationManager notificationManager = (NotificationManager) PostEventActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+                                notificationManager.notify(1, notificationBuilder.build());
                             }
                         }
                     });
@@ -177,6 +224,20 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
                                 Toast.makeText(PostEventActivity.this," Post succesfully!",Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(PostEventActivity.this, LoginActivity.class));
 
+                                NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(PostEventActivity.this, "M_CH_ID");
+
+                                notificationBuilder.setAutoCancel(true)
+                                        .setDefaults(Notification.DEFAULT_ALL)
+                                        .setWhen(System.currentTimeMillis())
+                                        .setSmallIcon(R.mipmap.ic_launcher)
+                                        .setTicker("Evento")
+                                        .setPriority(Notification.PRIORITY_MAX)
+                                        .setContentTitle("New Event Added")
+                                        .setContentText("New sport event added")
+                                        .setContentInfo("Info");
+
+                                NotificationManager notificationManager = (NotificationManager) PostEventActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+                                notificationManager.notify(1, notificationBuilder.build());
                             }
                         }
                     });
