@@ -34,15 +34,16 @@ public class HomeFragment extends Fragment {
 
     TextView etPromoted;
     TextView tvMusic;
-    final int[] IMAGES = {R.drawable.ledri,R.drawable.era};
-    final String[] NAMES = {"Ledri Vula","Era Istrefi"};
-    final String[] DESC = {"Entry: 5€","Entry: 10€"};
-    final String[] TIME = {"21:00 - 13/07/2018","22:00 - 31/07/2018"};
-    final String[] LOCATION = {"Zone Club","Duplex Premium"};
+    final int[] IMAGES = {R.drawable.ledri,R.drawable.era,R.drawable.kresha};
+    final String[] NAMES = {"Ledri Vula","Era Istrefi","MC Kresha"};
+    final String[] DESC = {"Entry: 5€","Entry: 10€","Free Entry"};
+    final String[] TIME = {"21:00 - 13/07/2018","22:00 - 31/07/2018","23:00 - 13/08/2018"};
+    final String[] LOCATION = {"Zone Club","Duplex Premium","Coco Club"};
     ImageButton imgBtn_Music;
     ImageButton imgBtn_Sport;
     ImageButton imgBtn_Business;
     ImageButton imgBtn_Theatre;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +52,7 @@ public class HomeFragment extends Fragment {
 
         etPromoted=view.findViewById(R.id.etPromoted);
         tvMusic=view.findViewById(R.id.tvMusic);
+
 
 
         DatabaseReference info=FirebaseDatabase.getInstance().getReference("Events").child("Business");
