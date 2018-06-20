@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                     String emri = dataSnapshot.child("eventName").getValue(String.class);
-                    
+
                 }
 
 
@@ -70,9 +70,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
-
-
 
 
         SharedPref sharedpref = new SharedPref(getActivity());

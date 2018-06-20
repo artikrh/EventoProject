@@ -134,7 +134,7 @@
             />
 
         <TextView
-            android:id="@+id/tvGjinia"
+            android:id="@+id/tvGender"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_alignBaseline="@+id/chckFemale"
@@ -163,13 +163,15 @@
             android:layout_below="@+id/atMbiemri"
             android:layout_centerHorizontal="true" />
 
+
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/chckFemale"
-            android:layout_centerHorizontal="true"
-            android:text="Register" />
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvProfilType"
+            android:text="Register"
+            android:layout_marginTop="15dp"/>
 
         <CheckBox
             android:id="@+id/chckFemale"
@@ -181,6 +183,44 @@
             android:text="Female"
             android:textColor="@color/lightGrey"
             android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tvProfilType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile Type: "
+            android:textColor="@color/lightGrey"
+            android:textSize="20dp"
+            android:layout_below="@+id/tvGender"/>
+
+        <RadioGroup
+            android:id="@+id/rdgProfile_Type"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/chckMale"
+            android:layout_below="@+id/tvGender"
+            android:orientation="horizontal"
+            android:layout_marginBottom="25dp">
+
+            <RadioButton
+                android:id="@+id/rbUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:textColor="@color/lightGrey"
+                android:textSize="20dp"
+                />
+
+            <RadioButton
+                android:id="@+id/rbBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Business"
+                android:textColor="@color/lightGrey"
+                android:textSize="20dp"/>
+
+        </RadioGroup>
+
 
     </RelativeLayout>
 

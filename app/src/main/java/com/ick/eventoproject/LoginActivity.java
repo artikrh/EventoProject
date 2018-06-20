@@ -175,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void account() {
-        Intent account = new Intent(this, chooseActivity.class);
+        Intent account = new Intent(this, UserActivity.class);
         startActivity(account);
     }
 

@@ -3,6 +3,7 @@ package com.ick.eventoproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity
     TextView tvEmri;
     TextView tvEmail;
     ImageView imgProfile;
-
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +41,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //tvEmri = findViewById(R.id.tvEmri);
-        //tvEmail = findViewById(R.id.tvEmail);
+
+
+
 
         DatabaseReference info=FirebaseDatabase.getInstance().getReference("Users");
         DatabaseReference info1=info.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -52,6 +54,14 @@ public class MainActivity extends AppCompatActivity
              String emri= dataSnapshot.child("emri").getValue(String.class);
              String mbiemri= dataSnapshot.child("mbiemri").getValue(String.class);
              String email=dataSnapshot.child("email").getValue(String.class);
+             Boolean profile_type=dataSnapshot.child("profile_type").getValue(Boolean.class);
+
+
+             //Cheecks if user is loged in as user or business
+             if(profile_type==true){
+                 hideItem();
+
+             }
 
              //tvEmri.setText(emri+" "+mbiemri);
              //tvEmail.setText(email);
@@ -69,7 +79,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView=findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         // Default fragment = HomeFragment (if logged in)
@@ -144,5 +154,11 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void hideItem()
+    {
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Menu nav_Menu = navigationView.getMenu();
+        nav_Menu.findItem(R.id.nav_post).setVisible(false);
     }
 }

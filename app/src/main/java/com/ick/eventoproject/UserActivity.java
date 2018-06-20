@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -38,9 +40,13 @@ public class UserActivity extends AppCompatActivity  {
     public  AutoCompleteTextView atPassword;
     public   CheckBox chckMale, chckFemale;
     public ProgressBar prgBar;
+    public RadioGroup rdgProfile_type;
+    public RadioButton rbUser;
+    public RadioButton rbBusiness;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,86 +63,151 @@ public class UserActivity extends AppCompatActivity  {
         prgBar= findViewById(R.id.progresBar);
         prgBar.setVisibility(View.GONE);
         mAuth=FirebaseAuth.getInstance();
+        rdgProfile_type=findViewById(R.id.rdgProfile_Type);
+        rbUser=findViewById(R.id.rbUser);
+        rbBusiness=findViewById(R.id.rbBusiness);
+
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final  String email= atEmail.getText().toString();
+                final String email = atEmail.getText().toString();
                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                final String emri= atEmri.getText().toString();
-                final   String mbiemri= atMbiemri.getText().toString();
-                final  String password= atPassword.getText().toString();
-                final boolean male=chckMale.isChecked();
-                final boolean female=chckFemale.isChecked();
+                final String emri = atEmri.getText().toString();
+                final String mbiemri = atMbiemri.getText().toString();
+                final String password = atPassword.getText().toString();
+                final boolean profile_type;
+                profile_type = rbUser.isChecked();
 
-
-                if(emri.equals("") || mbiemri.equals("") ||  email.equals("") || password.equals("") || !chckMale.isChecked() || !chckMale.isChecked()   ) {
+                if (emri.equals("") || mbiemri.equals("") || email.equals("") || password.equals("") || !chckMale.isChecked() || !chckMale.isChecked()
+                        || rdgProfile_type.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(UserActivity.this, "Please fill in all fields!", Toast.LENGTH_LONG).show();
-                }
-                else{
+                } else {
+                    if (rbUser.isChecked()) {
+                        if (email.matches(emailPattern)) {
 
-                    if(email.matches(emailPattern)) {
-                        prgBar.setVisibility(View.VISIBLE);
-                        //checks if user is already registered
-                        mAuth.fetchProvidersForEmail(email).addOnCompleteListener(new OnCompleteListener<ProviderQueryResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<ProviderQueryResult> task) {
-                                boolean check = !task.getResult().getProviders().isEmpty();
+                            prgBar.setVisibility(View.VISIBLE);
+                            //checks if user is already registered
+                            mAuth.fetchProvidersForEmail(email).addOnCompleteListener(new OnCompleteListener<ProviderQueryResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<ProviderQueryResult> task) {
+                                    boolean check = !task.getResult().getProviders().isEmpty();
 
-                                if (!check) {
-                                    //Ruajtja ne databaze
-                                    mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            prgBar.setVisibility(View.GONE);
-                                            if (task.isSuccessful()) {
-                                                User user = new User(emri, mbiemri, email);
+                                    if (!check) {
+                                        //Ruajtja ne databaze
+                                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                prgBar.setVisibility(View.GONE);
+                                                if (task.isSuccessful()) {
+                                                    User user = new User(emri, mbiemri, email, true);
 
 
-                                                FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
 
-                                                                @Override
-                                                                public void onComplete(@NonNull Task<Void> task) {
-                                                        prgBar.setVisibility(View.GONE);
-                                                        if (task.isSuccessful()) {
-                                                            Toast.makeText(UserActivity.this, "Registration successfully", Toast.LENGTH_LONG).show();
-                                                            prgBar.setVisibility(View.VISIBLE);
-                                                            Intent login = new Intent(UserActivity.this, LoginActivity.class);
-                                                            startActivity(login);
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            prgBar.setVisibility(View.GONE);
+                                                            if (task.isSuccessful()) {
+                                                                Toast.makeText(UserActivity.this, "Registration successfully", Toast.LENGTH_LONG).show();
+                                                                prgBar.setVisibility(View.VISIBLE);
+                                                                Intent login = new Intent(UserActivity.this, LoginActivity.class);
+                                                                startActivity(login);
 
 
-                                                        } else {
+                                                            } else {
 
+                                                            }
                                                         }
-                                                    }
 
-                                                });
-                                            } else {
-                                                Toast.makeText(UserActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                    });
+                                                } else {
+                                                    Toast.makeText(UserActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                }
                                             }
-                                        }
-                                    });
+                                        });
 
-                                } else {
-                                    Toast.makeText(UserActivity.this, "User already registered.Please sign in!", Toast.LENGTH_LONG).show();
-                                    prgBar.setVisibility(View.GONE);
-                                    startActivity(new Intent(UserActivity.this, LoginActivity.class));
+                                    } else {
+                                        Toast.makeText(UserActivity.this, "User already registered.Please sign in!", Toast.LENGTH_LONG).show();
+                                        prgBar.setVisibility(View.GONE);
+                                        startActivity(new Intent(UserActivity.this, LoginActivity.class));
+                                    }
                                 }
-                            }
-                        });
+                            });
+
+                        } else {
+                            Toast.makeText(UserActivity.this, "Invalid Email!", Toast.LENGTH_LONG).show();
+
+                        }
 
                     }
                     else {
-                        Toast.makeText(UserActivity.this, "Invalid Email!", Toast.LENGTH_LONG).show();
+                        if (rbBusiness.isChecked()) {
+                            if (email.matches(emailPattern)) {
+                                prgBar.setVisibility(View.VISIBLE);
+                                //checks if user is already registered
+                                mAuth.fetchProvidersForEmail(email).addOnCompleteListener(new OnCompleteListener<ProviderQueryResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<ProviderQueryResult> task) {
+                                        boolean check = !task.getResult().getProviders().isEmpty();
+
+                                        if (!check) {
+                                            //Ruajtja ne databaze
+                                            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                    prgBar.setVisibility(View.GONE);
+                                                    if (task.isSuccessful()) {
+                                                        User user = new User(emri, mbiemri, email, false);
+
+
+                                                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                                .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                prgBar.setVisibility(View.GONE);
+                                                                if (task.isSuccessful()) {
+                                                                    Toast.makeText(UserActivity.this, "Registration successfully", Toast.LENGTH_LONG).show();
+                                                                    prgBar.setVisibility(View.VISIBLE);
+                                                                    Intent login = new Intent(UserActivity.this, LoginActivity.class);
+                                                                    startActivity(login);
+
+
+                                                                } else {
+
+                                                                }
+                                                            }
+
+                                                        });
+                                                    } else {
+                                                        Toast.makeText(UserActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                    }
+                                                }
+                                            });
+
+                                        } else {
+                                            Toast.makeText(UserActivity.this, "User already registered.Please sign in!", Toast.LENGTH_LONG).show();
+                                            prgBar.setVisibility(View.GONE);
+                                            startActivity(new Intent(UserActivity.this, LoginActivity.class));
+                                        }
+                                    }
+                                });
+
+                            } else {
+                                Toast.makeText(UserActivity.this, "Invalid Email!", Toast.LENGTH_LONG).show();
+
+                            }
+
+                        }
+
 
                     }
 
                 }
-
             }
-
 
         });
 
