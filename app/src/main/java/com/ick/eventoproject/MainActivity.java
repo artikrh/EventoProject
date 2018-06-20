@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,15 +57,19 @@ public class MainActivity extends AppCompatActivity
                 String mbiemri = dataSnapshot.child("mbiemri").getValue(String.class);
                 String email = dataSnapshot.child("email").getValue(String.class);
                 Boolean profile_type = dataSnapshot.child("profile_type").getValue(Boolean.class);
+                tvEmri=findViewById(R.id.tvEmri);
+                tvEmail=findViewById(R.id.tvEmail);
+                tvEmail.setText(email);
+                tvEmri.setText(emri+" "+mbiemri);
 
 
-                //Cheecks if user is loged in as user or business
+
+                //Checks if user is loged in as user or business
                 if (profile_type == true) {
                     hideItem();
                 }
 
-                //tvEmri.setText(emri+" "+mbiemri);
-                //tvEmail.setText(email);
+
             }
 
             @Override
