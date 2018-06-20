@@ -129,7 +129,7 @@ public class PostEventActivity extends AppCompatActivity implements DatePickerDi
 
                     Intent intent=new Intent(Intent.ACTION_PICK);
                 if(business) {;
- 
+
                     Business_register Business=new Business_register(eventName,eventDescription,location,data);
                         FirebaseDatabase.getInstance().getReference("Events").child("Business").child(eventName)
                             .setValue(Business).addOnCompleteListener(new OnCompleteListener<Void>() {

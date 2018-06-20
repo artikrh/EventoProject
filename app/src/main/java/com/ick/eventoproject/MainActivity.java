@@ -119,10 +119,10 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             Intent i = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(i);
-        } else if (id == R.id.notifications) {
+        } /* else if (id == R.id.notifications) {
             Intent i = new Intent(MainActivity.this, NotificationsActivity.class);
             startActivity(i);
-        }
+        } */
         return super.onOptionsItemSelected(item);
     }
 
