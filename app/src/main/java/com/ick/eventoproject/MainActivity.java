@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, ProfileActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_logout) { // Logout
-
+            FirebaseAuth.getInstance().signOut();
             Intent i = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_post) {// Settings

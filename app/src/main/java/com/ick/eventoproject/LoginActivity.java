@@ -136,14 +136,14 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-     /* @Override
+    @Override
     protected void onStart() {
         super.onStart();
         if(mAuth.getCurrentUser() !=null ){
-            startActivity(new Intent ( loginActivity.this,MainActivity.class));
+            startActivity(new Intent ( LoginActivity.this,MainActivity.class));
         }
     }
-*/
+
 
     private Boolean exit = false;
     @Override
