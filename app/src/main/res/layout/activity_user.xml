@@ -137,20 +137,10 @@
             android:id="@+id/tvGender"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_alignBaseline="@+id/chckFemale"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/atPassword"
             android:text="Gender: "
             android:textAlignment="center"
-            android:textColor="@color/lightGrey"
-            android:textSize="20dp" />
-
-
-        <CheckBox
-            android:id="@+id/chckMale"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignTop="@+id/chckFemale"
-            android:layout_toStartOf="@+id/chckFemale"
-            android:text="Male"
             android:textColor="@color/lightGrey"
             android:textSize="20dp" />
 
@@ -173,34 +163,49 @@
             android:text="Register"
             android:layout_marginTop="15dp"/>
 
-        <CheckBox
-            android:id="@+id/chckFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/atPassword"
-            android:layout_marginEnd="27dp"
-            android:text="Female"
-            android:textColor="@color/lightGrey"
-            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/tvProfilType"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
+            android:layout_below="@+id/tvGender"
             android:text="Profile Type: "
             android:textColor="@color/lightGrey"
-            android:textSize="20dp"
-            android:layout_below="@+id/tvGender"/>
+            android:textSize="20dp" />
+
+        <RadioGroup
+            android:id="@+id/rdgGender"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/atPassword"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:textColor="@color/lightGrey"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/rbFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:textColor="@color/lightGrey"
+                android:textSize="20dp" />
+
+        </RadioGroup>
 
         <RadioGroup
             android:id="@+id/rdgProfile_Type"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/chckMale"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/tvGender"
-            android:orientation="horizontal"
-            android:layout_marginBottom="25dp">
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/rbUser"
@@ -208,8 +213,7 @@
                 android:layout_height="wrap_content"
                 android:text="User"
                 android:textColor="@color/lightGrey"
-                android:textSize="20dp"
-                />
+                android:textSize="20dp" />
 
             <RadioButton
                 android:id="@+id/rbBusiness"
@@ -217,7 +221,7 @@
                 android:layout_height="wrap_content"
                 android:text="Business"
                 android:textColor="@color/lightGrey"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
         </RadioGroup>
 

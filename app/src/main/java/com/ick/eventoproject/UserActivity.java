@@ -43,6 +43,9 @@ public class UserActivity extends AppCompatActivity  {
     public RadioGroup rdgProfile_type;
     public RadioButton rbUser;
     public RadioButton rbBusiness;
+    public RadioGroup rgbGender;
+    public RadioButton rbMale;
+    public RadioButton rbFemale;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
@@ -57,8 +60,7 @@ public class UserActivity extends AppCompatActivity  {
         atEmri= findViewById(R.id.atEmri);
         atMbiemri= findViewById(R.id.atMbiemri);
         atPassword= findViewById(R.id.atPassword);
-        chckMale= findViewById(R.id.chckMale);
-        chckFemale= findViewById(R.id.chckFemale);
+
         btnRegister= findViewById(R.id.btnRegister);
         prgBar= findViewById(R.id.progresBar);
         prgBar.setVisibility(View.GONE);
@@ -66,6 +68,9 @@ public class UserActivity extends AppCompatActivity  {
         rdgProfile_type=findViewById(R.id.rdgProfile_Type);
         rbUser=findViewById(R.id.rbUser);
         rbBusiness=findViewById(R.id.rbBusiness);
+        rgbGender=findViewById(R.id.rdgGender);
+        rbMale=findViewById(R.id.rbMale);
+        rbFemale=findViewById(R.id.rbFemale);
 
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +85,7 @@ public class UserActivity extends AppCompatActivity  {
                 final boolean profile_type;
                 profile_type = rbUser.isChecked();
 
-                if (emri.equals("") || mbiemri.equals("") || email.equals("") || password.equals("") || !chckMale.isChecked() || !chckMale.isChecked()
+                if (emri.equals("") || mbiemri.equals("") || email.equals("") || password.equals("") || rgbGender.getCheckedRadioButtonId()==-1
                         || rdgProfile_type.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(UserActivity.this, "Please fill in all fields!", Toast.LENGTH_LONG).show();
                 } else {
@@ -222,7 +227,7 @@ public class UserActivity extends AppCompatActivity  {
    /* protected void onStart() {
         super.onStart();
         if(mAuth.getCurrentUser() !=null ){
-            startActivity(new Intent ( perdoruesiActivity.this,MainActivity.class));
+            startActivity(new Intent ( UserActivity.this,MainActivity.class));
         }
     } */
 
