@@ -32,15 +32,13 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
-
     TextView etPromoted;
     TextView tvMusic;
     final int[] IMAGES = {R.drawable.ledri,R.drawable.era};
     final String[] NAMES = {"Ledri Vula","Era Istrefi"};
-    final String[] DESC = {"Zone Club","Duplex Premium"};
-    final String[] TIME = {"JULY 13 @ 21:00","JULY 31 @ 22:00"};
+    final String[] DESC = {"Entry: 5€","Entry: 10€"};
+    final String[] TIME = {"21:00 - 13/07/2018","22:00 - 31/07/2018"};
+    final String[] LOCATION = {"Zone Club","Duplex Premium"};
     ImageButton imgBtn_Music;
     ImageButton imgBtn_Sport;
     ImageButton imgBtn_Business;
@@ -161,11 +159,13 @@ public class HomeFragment extends Fragment {
             TextView tvTitle = convertView.findViewById(R.id.tvTitle);
             TextView tvDesc = convertView.findViewById(R.id.tvDesc);
             TextView tvTime = convertView.findViewById(R.id.tvTime);
+            TextView tvLocation = convertView.findViewById(R.id.tvLocation);
 
             imageView.setImageResource(IMAGES[position]);
             tvTitle.setText(NAMES[position]);
             tvDesc.setText(DESC[position]);
             tvTime.setText(TIME[position]);
+            tvLocation.setText(LOCATION[position]);
 
             return convertView;
 
