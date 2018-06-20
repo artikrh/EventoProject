@@ -82,7 +82,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher_background">
+                android:src="@drawable/ic_music">
 
             </ImageButton>
 
@@ -99,7 +99,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher_background">
+                android:src="@drawable/ic_sport">
 
             </ImageButton>
 
@@ -116,7 +116,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher_background">
+                android:src="@drawable/ic_business">
 
             </ImageButton>
 
@@ -133,7 +133,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher_background">
+                android:src="@drawable/ic_theatre">
 
             </ImageButton>
 
