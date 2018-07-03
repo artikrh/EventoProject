@@ -62,14 +62,10 @@ public class MainActivity extends AppCompatActivity
                 tvEmail.setText(email);
                 tvEmri.setText(emri+" "+mbiemri);
 
-
-
                 //Checks if user is loged in as user or business
                 if (profile_type == true) {
                     hideItem();
                 }
-
-
             }
 
             @Override
